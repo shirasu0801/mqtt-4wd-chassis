@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mqtt-mini4wd"
+version = "0.1.0"
+description = "MQTT control module for Raspberry Pi based Mini 4WD chassis"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "paho-mqtt>=2.1.0,<3",
+]
+
+[project.optional-dependencies]
+pi = [
+  "gpiozero>=2.0.1,<3",
+]
+dev = [
+  "pytest>=8.0.0,<9",
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[project.scripts]
+mini4wd-vehicle = "mini4wd.main_vehicle:main"
+mini4wd-controller = "mini4wd.main_controller:main"
+
